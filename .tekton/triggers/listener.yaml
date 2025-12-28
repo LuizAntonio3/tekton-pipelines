@@ -1,0 +1,18 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: github-listener
+spec:
+  serviceAccountName: tekton-robot # Requires RBAC permissions to create PipelineRuns
+  triggers:
+    - name: github-pr-trigger
+      interceptors:
+        - ref:
+            name: "github" # Uses the built-in GitHub interceptor
+          params:
+            - name: "eventTypes"
+              value: ["pull_request"]
+      bindings:
+        - ref: github-pr-binding
+      template:
+        ref: github-pr-template

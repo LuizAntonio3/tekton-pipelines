@@ -1,0 +1,10 @@
+apiVersion: tekton.dev/v1
+kind: Task
+metadata:
+  name: say-hello
+spec:
+  steps:
+    - name: echo
+      image: alpine
+      script: |
+        echo "Hello from the Task!"
