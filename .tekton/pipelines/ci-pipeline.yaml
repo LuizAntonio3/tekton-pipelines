@@ -2,6 +2,7 @@ apiVersion: tekton.dev/v1
 kind: Pipeline
 metadata:
   name: ci-pipeline
+  namespace: tekton-pipelines
 spec:
   tasks:
     - name: run-hello

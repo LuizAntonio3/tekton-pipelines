@@ -2,6 +2,7 @@ apiVersion: triggers.tekton.dev/v1beta1
 kind: EventListener
 metadata:
   name: github-listener
+  namespace: tekton-pipelines
 spec:
   serviceAccountName: tekton-robot # Requires RBAC permissions to create PipelineRuns
   triggers:
@@ -14,5 +15,6 @@ spec:
               value: ["pull_request"]
       bindings:
         - ref: github-pr-binding
+          kind: TriggerBinding
       template:
         ref: github-pr-template
