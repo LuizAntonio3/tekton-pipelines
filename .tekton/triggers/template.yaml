@@ -14,7 +14,7 @@ spec:
         generateName: github-run-
       spec:
         pipelineRef:
-          name: simple-pipeline
+          name: ci-pipeline
         params:
           - name: revision
             value: $(tt.params.git_revision)
